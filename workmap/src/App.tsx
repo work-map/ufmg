@@ -7,7 +7,6 @@ import SearchScreen from './components/SearchScreen';
 import PlaceMarker from './components/PlaceMarker';
 import PlaceScreen from './components/PlaceScreen';
 import PlaceList from './components/PlaceList';
-import personIconSvg from './assets/personIcon.svg';
 
 const personIcon = L.divIcon({
   className: '',
