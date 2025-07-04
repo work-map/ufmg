@@ -33,9 +33,18 @@ const placesData = [
     position: [-19.867063,-43.965563] as [number, number],
     descricao: 'Silêncio, ar-condicionado e Wi-Fi disponíveis.',
     categorias: ["Ar-Condicionado", "Wi-Fi", "Pouco barulho"],
-    foto: 'biblioteca.png',
-    avaliacao: 4.2,
+    foto: 'biblioteca.jpeg',
+    avaliacao: 3.8,
     avaliacoesCount: 80,
+  },
+  {
+    nome: "Coworking da Biblioteca da EEUFMG",
+    position: [-19.870188,-43.961938] as [number, number],
+    descricao: 'Silêncio, ar-condicionado, Wi-Fi e tomadas disponíveis.',
+    categorias: ["Ar-Condicionado", "Wi-Fi", "Pouco barulho", "Tomada"],
+    foto: 'coworking-engenharia.jpg',
+    avaliacao: 4.9,
+    avaliacoesCount: 210,
   },
   // Adicione mais locais conforme necessário
 ];

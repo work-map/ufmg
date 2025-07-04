@@ -35,6 +35,9 @@ function renderStars(avaliacao: number) {
   return stars;
 }
 
+// Importa todas as imagens da pasta photos para uso dinâmico
+const images = import.meta.glob('../assets/photos/*', { eager: true, query: '?url', import: 'default' });
+
 const PlaceScreen: React.FC<PlaceScreenProps> = ({
   open,
   onClose,
@@ -46,7 +49,8 @@ const PlaceScreen: React.FC<PlaceScreenProps> = ({
   avaliacoesCount = 0,
   avaliacaoUrl,
 }) => {
-  const fotoUrl = `/src/assets/photos/${foto}`;
+  // Busca a URL da imagem correspondente ao nome do arquivo
+  const fotoUrl = images[`../assets/photos/${foto}`] as string;
   const screenRef = useRef<HTMLDivElement>(null);
 
   // Explicação: O onClose pode não funcionar se o componente PlaceScreen não estiver sendo controlado corretamente pelo pai.

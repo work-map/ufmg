@@ -1,69 +1,82 @@
-# React + TypeScript + Vite
+# WorkMap UFMG
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um aplicativo web para encontrar e sugerir locais de estudo, trabalho e convivência no campus da UFMG.
 
-Currently, two official plugins are available:
+## ✨ Funcionalidades
+- **Mapa interativo** com marcadores dos principais locais do campus
+- **Busca por categorias** (Wi-Fi, Tomada, Ar-Condicionado, etc)
+- **Visualização detalhada** de cada local, com foto, avaliação e categorias
+- **Avaliação de locais** (link externo configurável)
+- **Sugestão de novos locais** (link externo configurável)
+- **Responsivo**: funciona bem em desktop e mobile
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Como rodar localmente
 
-## Expanding the ESLint configuration
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/work-map/ufmg.git
+   cd ufmg/workmap
+   ```
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
+3. **Configure as variáveis de ambiente:**
+   - Copie o arquivo `.env.example` para `.env` e edite os links:
+     ```bash
+     cp .env.example .env
+     # Edite .env conforme necessário
+     ```
+   - Exemplo de `.env`:
+     ```env
+     VITE_SUGGESTION_URL=https://forms.gle/SEU_FORM_SUGESTAO
+     VITE_AVALIACAO_URL=https://forms.gle/SEU_FORM_AVALIACAO
+     ```
+4. **Rode o app em modo desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
+   O app estará disponível em [http://localhost:5173](http://localhost:5173)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Build para produção
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+npm run build
+```
+Os arquivos finais estarão em `dist/`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🌐 Deploy no GitHub Pages
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Certifique-se de que o campo `homepage` no `package.json` e o campo `base` no `vite.config.ts` estão corretos:
+   - `homepage`: `https://work-map.github.io/ufmg`
+   - `base`: `/ufmg/`
+2. Faça o deploy:
+   ```bash
+   npm run deploy
+   ```
+3. O site ficará disponível em: [https://work-map.github.io/ufmg](https://work-map.github.io/ufmg)
+
+## 📁 Estrutura de pastas
+```
+workmap/
+  src/
+    assets/photos/    # Fotos dos locais
+    components/       # Componentes React
+    App.tsx           # Componente principal
+    ...
+  .env.example        # Exemplo de variáveis de ambiente
+  package.json        # Configurações do projeto
+  vite.config.ts      # Configuração do Vite
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 👨‍💻 Tecnologias
+- React + TypeScript
+- Vite
+- React-Leaflet + Leaflet
+- CSS Modules
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📢 Créditos
+Desenvolvido por [work-map](https://github.com/work-map) para a comunidade UFMG.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+Sinta-se à vontade para contribuir, sugerir melhorias ou reportar bugs!
