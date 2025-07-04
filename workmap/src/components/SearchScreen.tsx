@@ -4,6 +4,9 @@ import './SearchScreen.css';
 type Props = {
   open: boolean;
   onClose: () => void;
+  selectedCategories: string[];
+  setSelectedCategories: (cats: string[]) => void;
+  onSearch: () => void;
 };
 
 type Category = { label: string; icon: React.ReactNode };
@@ -21,14 +24,12 @@ for (let i = 0; i < categories.length; i += 2) {
   rows.push(categories.slice(i, i + 2));
 }
 
-const SearchScreen: React.FC<Props> = ({ open, onClose }) => {
-  const [selected, setSelected] = useState<string[]>([]);
-
+const SearchScreen: React.FC<Props> = ({ open, onClose, selectedCategories, setSelectedCategories, onSearch }) => {
   const toggleCategory = (label: string) => {
-    setSelected((prev) =>
-      prev.includes(label)
-        ? prev.filter((l) => l !== label)
-        : [...prev, label]
+    setSelectedCategories(
+      selectedCategories.includes(label)
+        ? selectedCategories.filter((l) => l !== label)
+        : [...selectedCategories, label]
     );
   };
 
@@ -41,7 +42,7 @@ const SearchScreen: React.FC<Props> = ({ open, onClose }) => {
           <div className="categories-row" key={idx}>
             {row.map((cat: Category) => (
               <button
-                className={`category${selected.includes(cat.label) ? ' selected' : ''}`}
+                className={`category${selectedCategories.includes(cat.label) ? ' selected' : ''}`}
                 key={cat.label}
                 onClick={() => toggleCategory(cat.label)}
                 type="button"
@@ -55,7 +56,15 @@ const SearchScreen: React.FC<Props> = ({ open, onClose }) => {
           </div>
         ))}
       </div>
-      <button className="search-action">Buscar</button>
+      <button className="search-action search-action-highlighted" onClick={onSearch}>
+        <span className="search-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="2" />
+            <line x1="15.2" y1="15.2" x2="20" y2="20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        </span>
+        Pesquisar
+      </button>
     </div>
   );
 };

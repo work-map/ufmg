@@ -92,14 +92,9 @@ h2 {
 }
 
 .search-action {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 1.5rem;
-  width: calc(100vw - 2rem);
+  margin-top: 2.5rem;
+  width: 90%;
   max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
   background: #888;
   color: #fff;
   border: none;
@@ -108,8 +103,36 @@ h2 {
   padding: 1.2rem 0;
   cursor: pointer;
   transition: background 0.2s;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 2100;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  font-weight: 600;
+}
+
+.search-action-highlighted {
+  background: #2563eb;
+  color: #fff;
+}
+
+.search-action-highlighted:hover {
+  background: #3b82f6;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #fff;
 }
 
 .search-action:active {
